@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.countermvvm.ui.theme.CounterMVVMTheme
 //import androidx.lifecycle.viewmodel.compose.viewModel
 //import org.example.coutermvvm.androidx.viewmodel.ext.android.viewModel
@@ -29,7 +31,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            val viewModel: CounterViewModel = CounterViewModel()
+//            val viewModel by viewModels<CounterViewModel>();
+            val viewModel = viewModel<CounterViewModel>();
             CounterMVVMTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
