@@ -21,6 +21,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.countermvvm.ui.theme.CounterMVVMTheme
 //import androidx.lifecycle.viewmodel.compose.viewModel
@@ -32,7 +34,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
 //            val viewModel by viewModels<CounterViewModel>();
-            val viewModel = viewModel<CounterViewModel>();
+            val viewModel = viewModel<CounterViewModel>(
+                factory = object : ViewModelProvider.Factory {
+                    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                        return super.create(modelClass)
+                    }
+                }
+            );
             CounterMVVMTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
